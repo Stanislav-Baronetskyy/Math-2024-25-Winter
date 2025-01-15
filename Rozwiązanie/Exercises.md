@@ -414,12 +414,18 @@ $$
 де $ a_{ij} $ - елементи матриці, а $ \mathbf{A}_{ij} $ - відповідні підматриці.
 
 **Підматриці** / **Podmacierze**:
-- $ \mathbf{A}_{11} = \begin{pmatrix}4 & 0 \\2 & 1\end{pmatrix} $ 
-- $ \mathbf{A}_{12} = \begin{pmatrix}1 & 0 \\3 & 1\end{pmatrix} $ 
-- $ \mathbf{A}_{13} = \begin{pmatrix}1 & 4 \\3 & 2\end{pmatrix} $ 
+
+$ \mathbf{A}_{11} = \begin{pmatrix}4 & 0 \\ 2 & 1\end{pmatrix} $
+
+$ \mathbf{A}_{12} = \begin{pmatrix}1 & 0 \\ 3 & 1\end{pmatrix} $
+
+$ \mathbf{A}_{13} = \begin{pmatrix}1 & 4 \\ 3 & 2\end{pmatrix} $
+
 
 **Обчисліть визначники підматриць** / **Oblicz wyznaczniki podmacierzy**:
+
 $$
+
 \text{det}(\mathbf{A}_{11}) = (4)(1) - (0)(2) = 4 \quad \text{(визначник підматриці A11)} / \quad \text{(wyznacznik podmacierzy A11)}
 $$
 $$
