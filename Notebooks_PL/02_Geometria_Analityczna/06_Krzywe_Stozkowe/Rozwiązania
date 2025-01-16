@@ -1,0 +1,85 @@
+# Zadanie 1
+import matplotlib.pyplot as plt
+import numpy as np
+
+theta = np.linspace(0, 2*np.pi, 100)
+r = 3
+a, b = 1, 2  # środek okręgu
+
+x = a + r * np.cos(theta)
+y = b + r * np.sin(theta)
+
+plt.plot(x, y, label='Okrąg o środku w punkcie A(1,2)')
+plt.scatter([a], [b], color='red')
+plt.text(a, b, 'A(1,2)', verticalalignment='bottom', horizontalalignment='right')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.grid(True)
+plt.title('Okrąg o środku w punkcie A i promieniu 3')
+plt.axis('equal')
+plt.show()
+
+print("Zadanie 2")
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Wyznaczanie współczynnika a
+x1, x2 = 2, 4
+x3, y3 = 3, 1
+a = y3 / ((x3 - x1) * (x3 - x2))
+
+x = np.linspace(0, 6, 400)
+y = a * (x - x1) * (x - x2)
+
+plt.plot(x, y, label=f'Parabola (a={a:.2f})')
+plt.scatter([x1, x2, x3], [0, 0, y3], color='red')
+plt.text(x1, 0, 'x=2', verticalalignment='bottom', horizontalalignment='right')
+plt.text(x2, 0, 'x=4', verticalalignment='bottom', horizontalalignment='right')
+plt.text(x3, y3, 'y(3)=1', verticalalignment='bottom', horizontalalignment='right')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.grid(True)
+plt.title('Parabola przecinająca oś Ox w punktach x=2 i x=4 oraz y(3)=1')
+plt.show()
+
+import sympy as sp
+
+x, y = sp.symbols('x y')
+eq = x**2 + 4*y**2 - 4*x - 16*y + 16
+center = sp.solve([sp.diff(eq, x), sp.diff(eq, y)], (x, y))
+print("Zadanie 3")
+print(f"Środek elipsy: {center}")
+
+
+import sympy as sp
+
+m = sp.symbols('m', positive=True)
+x, y = sp.symbols('x y')
+eq1 = x**2 + y**2 - 1
+eq2 = y - m*x + 5
+sol = sp.solve([eq1, eq2], (x, y))
+m_values = [sol[0][0].evalf(), sol[1][0].evalf()]
+print("Zadanie 4")
+print(f"Współczynnik kierunkowy m: {m_values}")
+
+
+import sympy as sp
+
+x, y = sp.symbols('x y')
+eq1 = x**2 - y**2 - 1
+eq2 = x**2 + 4*y**2 - 6
+intersection = sp.solve([eq1, eq2], (x, y))
+print("Zadanie 5")
+print(f"Punkty przecięcia: {intersection}")
+
+
+import numpy as np
+
+# Odległość między ramionami hiperboli wzdłuż osi Ox dla x=0
+distance = 2 * np.sqrt(1)  # ponieważ równanie hiperboli to x^2 - y^2 = 1
+print("Zadanie 6")
+print(f"Odległość między ramionami hiperboli: {distance}")

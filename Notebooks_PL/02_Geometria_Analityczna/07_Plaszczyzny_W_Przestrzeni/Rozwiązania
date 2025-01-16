@@ -1,0 +1,134 @@
+# Zadanie 1
+import matplotlib.pyplot as plt
+import numpy as np
+
+def plane_equation(p1, p2, p3):
+    v1 = np.array(p2) - np.array(p1)
+    v2 = np.array(p3) - np.array(p1)
+    normal = np.cross(v1, v2)
+    d = -np.dot(normal, np.array(p1))
+    return (*normal, d)
+
+p1 = [1, 2, 3]
+p2 = [3, 4, 5]
+p3 = [2, 1, 4]
+
+coeffs = plane_equation(p1, p2, p3)
+print(f"Równanie płaszczyzny: {coeffs[0]}x + {coeffs[1]}y + {coeffs[2]}z + {coeffs[3]} = 0")
+
+x = np.linspace(0, 4, 10)
+y = np.linspace(0, 5, 10)
+X, Y = np.meshgrid(x, y)
+Z = (-coeffs[0] * X - coeffs[1] * Y - coeffs[3]) / coeffs[2]
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, alpha=0.5)
+ax.scatter(*zip(*[p1, p2, p3]), color="red")
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('Płaszczyzna przez punkty A, B i C')
+plt.show()
+
+print("Zadanie 2")
+import numpy as np
+
+point = np.array([1, 2, 3])
+normal = np.array([2, 3, 4])
+d = -np.dot(normal, point)
+
+print(f"Równanie płaszczyzny: {normal[0]}x + {normal[1]}y + {normal[2]}z + {d} = 0")
+
+x = np.linspace(0, 5, 10)
+y = np.linspace(0, 5, 10)
+X, Y = np.meshgrid(x, y)
+Z = (-normal[0] * X - normal[1] * Y - d) / normal[2]
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, alpha=0.5)
+ax.scatter(*point, color="red")
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('Płaszczyzna równoległa przez punkt A')
+plt.show()
+
+print("Zadanie 3")
+import numpy as np
+
+point = np.array([1, 2, 3])
+normal = np.array([2, 3, 4])
+d = -np.dot(normal, point)
+
+print(f"Równanie płaszczyzny: {normal[0]}x + {normal[1]}y + {normal[2]}z + {d} = 0")
+
+x = np.linspace(0, 5, 10)
+y = np.linspace(0, 5, 10)
+X, Y = np.meshgrid(x, y)
+Z = (-normal[0] * X - normal[1] * Y - d) / normal[2]
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, alpha=0.5)
+ax.scatter(*point, color="red")
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('Płaszczyzna prostopadła przez punkt A')
+plt.show()
+
+import sympy as sp
+
+x, y, z = sp.symbols('x y z')
+eq1 = 2*x + 3*y + 4*z - 5
+eq2 = 3*x + 4*y + 2*z - 6
+sol = sp.solve([eq1, eq2], (x, y, z))
+print("Zadanie 4")
+print(f"Prosta przecięcia: {sol}")
+
+print("Zadanie 5")
+import numpy as np
+
+point = np.array([1, 2, 3])
+v1 = np.array([1, 0, 1])
+v2 = np.array([0, 1, -1])
+normal = np.cross(v1, v2)
+d = -np.dot(normal, point)
+
+print(f"Równanie płaszczyzny: {normal[0]}x + {normal[1]}y + {normal[2]}z + {d} = 0")
+
+x = np.linspace(0, 5, 10)
+y = np.linspace(0, 5, 10)
+X, Y = np.meshgrid(x, y)
+Z = (-normal[0] * X - normal[1] * Y - d) / normal[2]
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, alpha=0.5)
+ax.scatter(*point, color="red")
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('Płaszczyzna przez punkt A i równoległa do wektorów v1 i v2')
+plt.show()
+
+import numpy as np
+
+# Płaszczyzna równoległa
+normal_parallel = np.array([2, 3, 4])
+d_parallel = 10
+print("Zadanie 6")
+print(f"Równanie płaszczyzny równoległej: {normal_parallel[0]}x + {normal_parallel[1]}y + {normal_parallel[2]}z + {d_parallel} = 0")
+
+# Płaszczyzna prostopadła
+normal_perpendicular = np.cross(normal_parallel, np.array([1, 0, 0]))  # przykład
+d_perpendicular = 0
+print("Zadanie 6.1")
+print(f"Równanie płaszczyzny prostopadłej: {normal_perpendicular[0]}x + {normal_perpendicular[1]}y + {normal_perpendicular[2]}z + {d_perpendicular} = 0")
+

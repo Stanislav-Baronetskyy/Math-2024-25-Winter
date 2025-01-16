@@ -1,0 +1,76 @@
+# Zadanie 1
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Środek i promień sfery
+center = np.array([1, 2, 3])
+radius = 3
+
+# Siatka dla sfery
+u = np.linspace(0, 2 * np.pi, 100)
+v = np.linspace(0, np.pi, 100)
+x = center[0] + radius * np.outer(np.cos(u), np.sin(v))
+y = center[1] + radius * np.outer(np.sin(u), np.sin(v))
+z = center[2] + radius * np.outer(np.ones(np.size(u)), np.cos(v))
+
+ax.plot_surface(x, y, z, color='b', alpha=0.3)
+
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.set_title('Sfera o środku w punkcie (1,2,3) i promieniu 3')
+
+plt.show()
+
+import numpy as np
+
+# Środki i promienie sfer
+center1 = np.array([0, 0, 0])
+radius1 = 1
+
+center2 = np.array([0, 0, 0])
+radius2 = np.sqrt(2)
+
+# Odległość między środkami sfer
+distance_centers = np.linalg.norm(center1 - center2)
+
+# Sprawdzenie punktów wspólnych
+if distance_centers <= radius1 + radius2:
+    print("Zadanie 2")
+    print("Sfery mają punkty wspólne.")
+else:
+    print("Sfery nie mają punktów wspólnych.")
+
+import sympy as sp
+
+x, y, z = sp.symbols('x y z')
+sphere1 = x**2 + y**2 + z**2 - 1
+sphere2 = (x-1)**2 + y**2 + z**2 - 1
+
+# Równanie krzywej przecięcia
+curve_eq = sp.simplify(sp.Eq(sphere1, sphere2))
+print("Zadanie 3")
+print(f"Równanie krzywej przecięcia: {curve_eq}")
+
+import sympy as sp
+
+x, y, z = sp.symbols('x y z')
+f = (x-1)**2 + y**2 + 1
+P = (1, 0, 1)
+
+# Pochodne
+df_dx = sp.diff(f, x)
+df_dy = sp.diff(f, y)
+
+# Wartości pochodnych w punkcie P
+df_dx_P = df_dx.subs({x: P[0], y: P[1]})
+df_dy_P = df_dy.subs({x: P[0], y: P[1]})
+
+# Równanie płaszczyzny stycznej
+tangent_plane = z - P[2] - df_dx_P * (x - P[0]) - df_dy_P * (y - P[1])
+print("Zadanie 4")
+print(f"Równanie płaszczyzny stycznej: {sp.simplify(tangent_plane)} = 0")

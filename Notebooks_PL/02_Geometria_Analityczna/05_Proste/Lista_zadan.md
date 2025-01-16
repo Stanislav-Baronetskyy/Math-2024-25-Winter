@@ -12,3 +12,4 @@
 * Prosta przecina osie współrzędnych w punktach $A(2, 0)$ i $B(0, 3)$. Znajdź równanie prostej.
 * Policz kąt między prostą $y = x + 3$ a osią $Ox$.
 * Podaj wektor prostopadły do prostej $x+y+1=0$.
+* 
